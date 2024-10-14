@@ -1,0 +1,99 @@
+header {
+  background: #ffffff;
+  color: #333333;
+  padding: 1rem 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+header h1 {
+  margin: 0 0 1rem 0; /* Maintain existing margins */
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: left; 
+  width: 100%; 
+}
+
+
+nav {
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #333333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  background-color: #1976d2;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #1976d2;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+}

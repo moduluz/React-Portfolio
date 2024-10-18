@@ -15,7 +15,7 @@ function Header() {
         <h1>Your Portfolio</h1>
         <nav>
           <ul className="nav-list">
-            {['home', 'about', 'projects', 'contact'].map((tab) => (
+            {['Home', 'about', 'projects', 'contact'].map((tab) => (
               <li key={tab}>
                 <a 
                   href={`#${tab}`} 

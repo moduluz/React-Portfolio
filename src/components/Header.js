@@ -1,34 +1,39 @@
-// components/Header.js
 import React, { useState } from 'react';
-import './Header.css';  // Importing the CSS file
+import { Link, useLocation } from 'react-router-dom';
+import './Header.css';
 
 function Header() {
-  const [activeTab, setActiveTab] = useState('home');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.pathname === '/' ? 'home' : location.pathname.slice(1));
 
   const handleTabClick = (tab) => {
-    setActiveTab(tab);
+    setActiveTab(tab.toLowerCase());
   };
 
   return (
-    <header className="header">
-      <div className="header-content">
+    <header>
+      <nav>
         <h1>Your Portfolio</h1>
-        <nav>
-          <ul className="nav-list">
-            {['Home', 'about', 'projects', 'contact'].map((tab) => (
-              <li key={tab}>
-                <a 
-                  href={`#${tab}`} 
-                  className={activeTab === tab ? 'active' : ''}
-                  onClick={() => handleTabClick(tab)}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+        <ul>
+          {[
+            { name: 'Home', path: '/' },
+            { name: 'Projects', path: '/projects' },
+            { name: 'Education & Certificates', path: '/education-certificates' },
+            { name: 'Resume', path: '/resume' },
+            { name: 'Contact', path: '/contact' }
+          ].map((tab) => (
+            <li key={tab.name}>
+              <Link
+                to={tab.path}
+                className={activeTab === tab.name.toLowerCase() ? 'active' : ''}
+                onClick={() => handleTabClick(tab.name)}
+              >
+                {tab.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }

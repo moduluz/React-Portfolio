@@ -1,0 +1,83 @@
+/* Education.css */
+.education-section {
+  padding: 2rem;
+  background-color: var(--color-primary-50);
+}
+
+.education-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.education-box {
+  background: linear-gradient(135deg, 
+    var(--color-primary-200), var(--color-primary-300), 
+    var(--color-primary-400), var(--color-primary-500);
+  );
+  background-size: 400% 400%;
+  animation: gradientBreathing 10s ease infinite; /* Gradient animation */
+  border: 1px solid var(--color-primary-300);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Adjust width as necessary */
+  transition: transform 0.3s ease;
+}
+
+.education-box:hover {
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+.education-box h3 {
+  color: var(--color-primary-900);
+  margin-bottom: 0.5rem;
+}
+
+.education-box p {
+  color: var(--color-primary-600);
+}
+
+.certificates-section {
+  background: linear-gradient(135deg, 
+    var(--color-primary-200), var(--color-primary-300), 
+    var(--color-primary-400), var(--color-primary-500);
+  );
+  background-size: 400% 400%;
+  animation: gradientBreathing 10s ease infinite; /* Gradient animation */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.certificates-section h3 {
+  color: var(--color-primary-900);
+}
+
+.certificates-section ul {
+  list-style-type: none; /* Removes bullet points */
+  padding: 0; /* Removes padding */
+}
+
+.certificates-section li {
+  padding: 0.5rem 0; /* Spacing between list items */
+  color: var(--color-primary-600);
+  transition: color 0.3s ease;
+}
+
+.certificates-section li:hover {
+  color: var(--color-primary-900); /* Change color on hover */
+}
+
+/* Keyframes for gradient breathing animation */
+@keyframes gradientBreathing {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

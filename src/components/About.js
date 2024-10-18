@@ -1,27 +1,69 @@
 // src/components/About.js
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './About.css';
 
 function About() {
+  const imageRef = useRef(null);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const aboutSection = document.getElementById('about');
+      
+      if (aboutSection && imageRef.current && textRef.current) {
+        const sectionTop = aboutSection.getBoundingClientRect().top;
+        const sectionBottom = aboutSection.getBoundingClientRect().bottom;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight * 0.75 && sectionBottom > windowHeight * 0.25) {
+          imageRef.current.classList.add('animate');
+          textRef.current.classList.add('animate');
+        } else {
+          imageRef.current.classList.remove('animate');
+          textRef.current.classList.remove('animate');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once to check initial state
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section id="about" className="about-section">
       <div className="about-content">
         <h2>About Me</h2>
         <div className="about-grid">
-          <div className="about-image">
-          <img src="/pngwing.com.png" alt="Your Name" />
+          <div ref={imageRef} className="about-image">
+            <img src="/pngwing.com.png" alt="Aditya Singh Khichi" />
           </div>
-          <div className="about-text">
-            <p>Hello! I'm [Your Name], a [Your Profession] based in [Your Location]. I'm passionate about [Your Interests/Specialties].</p>
-            <p>With [X] years of experience in [Your Field], I've had the opportunity to work on a variety of projects, from [Example Project Type] to [Another Example].</p>
-            <p>My approach to [Your Field] is [Brief Description of Your Approach or Philosophy]. I'm always eager to take on new challenges and continue learning in this ever-evolving field.</p>
+          <div ref={textRef} className="about-text">
+            <p>Hello! I'm Aditya Singh Khichi, a Big Data Analytics enthusiast based in India. I'm passionate about web development, machine learning, and AI-based projects.</p>
+            <p>With 2+ years of experience, I’ve worked on a variety of projects, ranging from web applications to machine learning models.</p>
+            <p>My approach to development is driven by a focus on scalability, performance, and modern design principles.</p>
+
             <h3>Skills</h3>
+
+            <h4 className="skills-heading">Full Stack Development</h4>
             <ul className="skills-list">
-              <li>Skill 1</li>
-              <li>Skill 2</li>
-              <li>Skill 3</li>
-              <li>Skill 4</li>
-              <li>Skill 5</li>
+              <li>React</li>
+              <li>Node.js</li>
+              <li>Next.js</li>
+              <li>PostgreSQL</li>
+              <li>MongoDB</li>
+            </ul>
+
+            <h4 className="skills-heading">Data Science & AI</h4>
+            <ul className="skills-list">
+              <li>Pandas</li>
+              <li>PyTorch</li>
+              <li>TensorFlow</li>
+              <li>Keras</li>
+              <li>Python</li>
             </ul>
           </div>
         </div>
